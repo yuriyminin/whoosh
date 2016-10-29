@@ -23,6 +23,61 @@ app.get('/plane', function(req, res) {
   res.send(JSON.stringify(rand));
 });
 
+app.get('/happy', function(req, res) {
+  array = [];
+  for (plane in global.planes) {
+    if (global.planes[plane][1] === "happy") {
+      array.push(global.planes[plane]);
+    }
+  }
+  var rand = array[Math.floor(Math.random() * array.length)];
+  res.send(JSON.stringify(rand));
+});
+
+app.get('/angry', function(req, res) {
+  array = [];
+  for (plane in global.planes) {
+    if (global.planes[plane][1] === "angry") {
+      array.push(global.planes[plane]);
+    }
+  }
+  var rand = array[Math.floor(Math.random() * array.length)];
+  res.send(JSON.stringify(rand));
+});
+
+app.get('/scared', function(req, res) {
+  array = [];
+  for (plane in global.planes) {
+    if (global.planes[plane][1] === "scared") {
+      array.push(global.planes[plane]);
+    }
+  }
+  var rand = array[Math.floor(Math.random() * array.length)];
+  res.send(JSON.stringify(rand));
+});
+
+app.get('/sad', function(req, res) {
+  array = [];
+  for (plane in global.planes) {
+    if (global.planes[plane][1] === "sad") {
+      array.push(global.planes[plane]);
+    }
+  }
+  var rand = array[Math.floor(Math.random() * array.length)];
+  res.send(JSON.stringify(rand));
+});
+
+app.get('/neutral', function(req, res) {
+  array = [];
+  for (plane in global.planes) {
+    if (global.planes[plane][1] === "neutral") {
+      array.push(global.planes[plane]);
+    }
+  }
+  var rand = array[Math.floor(Math.random() * array.length)];
+  res.send(JSON.stringify(rand));
+});
+
 app.post('/planes', function (req, res) {
   global.planes.push([req.body.message,req.body.emotion]);
   console.log(global.planes);
