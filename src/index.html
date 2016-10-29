@@ -1,9 +1,181 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Simple Node App Template</title>
-    </head>
-    <body>
-        <p>Hello</p>
-    </body>
+<html lang="en">
+	<head>
+		<title>three.js canvas - geometry - birds</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #6495ED;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+
+				background-color: #6495ED;
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+		<link rel="stylesheet" type="text/css" href="whoosh.css" media="screen" />
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+		<script type="text/javascript" src="js/fold.js"></script>
+
+		<a class="btn-floating btn-large waves-effect waves-light red" id = "add"><i class="material-icons">add</i></a>
+		<a class="btn-floating btn-large waves-effect waves-light red" id = "get"><i class="material-icons">send</i></a>
+		<div id="info"><a href="http://whoosh.org" target="_blank">WHOOSH LOGO HERE</a></div>
+		<div id="plate" class="front">
+								<textarea class="message" id="planetext">
+								</textarea>
+								<button class="send"> Send it </button> <br/>
+						</div>
+
+						<div id="container" class="beginning">
+								<div id="left-wing">
+										<div class="top_left curvable"> </div>
+										<div class="bottom_left curvable"> </div>
+										<div class="wing wing1"></div>
+										<div class="wing wing2"></div>
+								</div>
+
+								<div id="right-wing">
+										<div class="top_right curvable"> </div>
+										<div class="bottom_right curvable"> </div>
+										<div class="wing wing3"></div>
+										<div class="wing wing4"></div>
+								</div>
+
+						</div>
+		<script src="build/three.js"></script>
+		<script src="js/renderers/Projector.js"></script>
+		<script src="js/renderers/CanvasRenderer.js"></script>
+		<script src="obj/Bird.js"></script>
+		<script src="js/movement.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+			var SCREEN_WIDTH = window.innerWidth,
+			SCREEN_HEIGHT = window.innerHeight,
+			SCREEN_WIDTH_HALF = SCREEN_WIDTH  / 2,
+			SCREEN_HEIGHT_HALF = SCREEN_HEIGHT / 2;
+
+			var camera, scene, renderer,
+			birds, bird;
+
+			var boid, boids;
+
+			var stats;
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+				camera.position.z = 450;
+
+				scene = new THREE.Scene();
+
+				birds = [];
+				boids = [];
+
+				for ( var i = 0; i < 200; i ++ ) {
+
+					boid = boids[ i ] = new Boid();
+					boid.position.x = Math.random() * 400 - 200;
+					boid.position.y = Math.random() * 400 - 200;
+					boid.position.z = Math.random() * 400 - 200;
+					boid.velocity.x = Math.random() * 2 - 1;
+					boid.velocity.y = Math.random() * 2 - 1;
+					boid.velocity.z = Math.random() * 2 - 1;
+					boid.setAvoidWalls( true );
+					boid.setWorldSize( 500, 500, 400 );
+
+					bird = birds[ i ] = new THREE.Mesh( new Bird(), new THREE.MeshBasicMaterial( { color:0xffffff, side: THREE.DoubleSide } ) );
+					bird.phase = Math.floor( Math.random() * 62.83 );
+					scene.add( bird );
+
+
+				}
+
+				renderer = new THREE.CanvasRenderer();
+				renderer.setClearColor( 0x6495ED );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.body.appendChild( renderer.domElement );
+
+
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				var vector = new THREE.Vector3( event.clientX - SCREEN_WIDTH_HALF, - event.clientY + SCREEN_HEIGHT_HALF, 0 );
+
+				for ( var i = 0, il = boids.length; i < il; i++ ) {
+
+					boid = boids[ i ];
+
+					vector.z = boid.position.z;
+
+					boid.repulse( vector );
+
+				}
+
+			}
+			//
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+
+			}
+
+			function render() {
+
+				for ( var i = 0, il = birds.length; i < il; i++ ) {
+
+					boid = boids[ i ];
+					boid.run( boids );
+
+					bird = birds[ i ];
+					bird.position.copy( boids[ i ].position );
+
+					color = bird.material.color;
+					color.r = color.g = color.b = ( 900 + bird.position.z ) / 1000;
+
+					bird.rotation.y = Math.atan2( - boid.velocity.z, boid.velocity.x );
+					bird.rotation.z = Math.asin( boid.velocity.y / boid.velocity.length() );
+
+					bird.phase = ( bird.phase + ( Math.max( 0, bird.rotation.z ) + 0.1 )  ) % 62.83;
+					bird.geometry.vertices[ 5 ].y = bird.geometry.vertices[ 4 ].y = Math.sin( bird.phase ) * 5;
+				}
+				renderer.render( scene, camera );
+			}
+		</script>
+	</body>
 </html>
