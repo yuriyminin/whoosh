@@ -19,7 +19,9 @@ textarea{
    margin-left: 10px;
    z-index: 1;
 }
-
+canvas {
+    z-index: 0;
+}
 .wing {
     background: url('wing1.png') center center no-repeat;
 
@@ -82,12 +84,10 @@ textarea{
     -ms-perspective-origin: 200px 131px;
     -o-perspective-origin: 200px 131px;
     perspective-origin: 200px 131px;
-
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
-
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
     -o-transition: all 0.8s ease-in-out;
@@ -100,7 +100,7 @@ textarea{
     backface-visibility: hidden;
     position: relative;
     width: 400px;
-    height: 260px;
+    /* height: 260px; */
     top: 40px;
     text-align: center;
     display: block;
@@ -116,7 +116,6 @@ textarea{
     -ms-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
     position: relative;
-
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -129,9 +128,8 @@ textarea{
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
     width: 400px;
-    height: 260px;
+    /* height: 260px; */
     top: 300px;
-
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
     -o-transition: all 0.8s ease-in-out;
