@@ -16,11 +16,45 @@
 				overflow: hidden;
 			}
 		</style>
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+		<link rel="stylesheet" type="text/css" href="whoosh.css" media="screen" />
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+		<script type="text/javascript" src="js/fold.js"></script>
 
-		<div id="container"></div>
+		<a class="btn-floating btn-large waves-effect waves-light red" id = "add"><i class="material-icons">add</i></a>
+		<a class="btn-floating btn-large waves-effect waves-light red" id = "get"><i class="material-icons">send</i></a>
 		<div id="info"><a href="http://whoosh.org" target="_blank">WHOOSH LOGO HERE</a></div>
+		<div id="plate" class="front">
+								<textarea class="message" id="planetext">
+								</textarea>
+								<button class="send"> Send it </button> <br/>
+						</div>
+
+						<div id="container" class="beginning">
+								<div id="left-wing">
+										<div class="top_left curvable"> </div>
+										<div class="bottom_left curvable"> </div>
+										<div class="wing wing1"></div>
+										<div class="wing wing2"></div>
+								</div>
+
+								<div id="right-wing">
+										<div class="top_right curvable"> </div>
+										<div class="bottom_right curvable"> </div>
+										<div class="wing wing3"></div>
+										<div class="wing wing4"></div>
+								</div>
+
+						</div>
 		<script src="build/three.js"></script>
 		<script src="js/renderers/Projector.js"></script>
 		<script src="js/renderers/CanvasRenderer.js"></script>
@@ -142,6 +176,5 @@
 				renderer.render( scene, camera );
 			}
 		</script>
-
 	</body>
 </html>
