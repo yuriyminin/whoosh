@@ -2276,6 +2276,9 @@ video {
   /* 1 */
   vertical-align: baseline;
   /* 2 */
+  position: absolute;
+  top: 1px;
+  left: 1px;
 }
 
 /**
