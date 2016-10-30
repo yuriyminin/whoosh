@@ -19,6 +19,15 @@ $().ready(function() {
                             }, 2000);
                         }, 2800);
                     }, 200);
+                    $.post("/planes",
+                    {
+                      message: "LOLS THIS IS A MESSAGE HAHasfdajsdflj",
+                      emotion: "Angry"
+                    },
+                    function(data,status){
+                        console.log(data);
+                    });
+
                 });
 
 
@@ -31,6 +40,7 @@ $().ready(function() {
   });
 
   $('#get').click(function() {
+<<<<<<< HEAD
       // document.querySelector("#planetext").style.boxShadow = 'none';
       // $('.message').attr('contenteditable', 'false');
       // console.log(document.getElementById("planetext").contentEditable);
@@ -48,5 +58,16 @@ $().ready(function() {
             $('#planetext').removeClass('display');
             $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
             $('.curvable').removeClass('curved');
+=======
+      document.querySelector("#planetext").style.boxShadow = 'none';
+      $('.message').attr('contenteditable', 'false');
+      console.log(document.getElementById("planetext").contentEditable);
+      $('#view').addClass('read');
+      $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
+      $('.curvable').removeClass('curved');
+      $.get("/planes", function(data, status){
+        console.log(data);
+      });
+>>>>>>> 53e1091d22aa951caefb617c6c96ec9fbfbe87bc
           });
   });
