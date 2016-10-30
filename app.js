@@ -3,9 +3,22 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
+var firebase = require("firebase");
 
 app.use(express.static('src/'));
 app.use(bodyParser.json());
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAz_1Ugtj_azmt6eBLadwIwJ4qur8JHGJc",
+  authDomain: "whoosh-8fb7e.firebaseapp.com",
+  databaseURL: "https://whoosh-8fb7e.firebaseio.com",
+  storageBucket: "",
+  messagingSenderId: "104053919217"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
 
 global.planes = [];
 
@@ -84,16 +97,13 @@ app.post('/planes', function (req, res) {
   res.send('Success');
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('eval', function(msg){
-      io.emit('evalClient', msg);
+function writeUserData(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
   });
-
-  socket.on('statsClient', function(msg){
-      io.emit('stats', msg);
-  })
-});
+}
 
 http.listen(3000, function(){
   console.log('listening on *:3000');
