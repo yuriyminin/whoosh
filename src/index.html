@@ -45,18 +45,30 @@
 			<a class="btn-floating btn-large waves-effect waves-light red" id = "add"><i class="material-icons">add</i></a>
 			<a class="btn-floating btn-large waves-effect waves-light red" id = "get"><i class="material-icons">send</i></a>
 		</div>
-
+		  <div class="output">
+		    <img id="photo" alt="The screen capture will appear in this box.">
+		  </div>
 		<div id="plate" class="front">
+			<div class="camera">
+				<video id="video">Video stream not available.</video>
+<!-- 				<button id="startbutton">Take photo</button> -->
+				<canvas id="canvas">
+				</canvas>
+			</div>
 			<div class="type-wrap" id="type-wrap">
 				<h3>
 					<span class="visually-hidden">This is a Test and another line.</span>
 					<span role="presentation" aria-hidden="true"></span>
 				</h3>
 			</div>
-								<textarea class="message" id="planetext"></textarea>
-								<p id="start" class="fromServer"></p>
-								<a class="btn-floating btn-large waves-effect waves-light blue" id = "send"><i class="material-icons send">publish</i></a>
-
+			<textarea class="message" id="planetext"></textarea>
+			<div id="buttons">
+				<a class="btn-floating btn-large waves-effect waves-light blue" id = "send"><i class="material-icons send">publish</i></a>
+			</div>
+			<p id="start" class="fromServer"></p>
+		</div>
+					<div id ="view">						
+						<a class="btn-floating btn-large waves-effect waves-light blue" id = "get"><i class="material-icons send">send</i></a>
 					</div>
 					<div id="container" class="beginning">
 						<div id="left-wing">
@@ -78,7 +90,8 @@
 		<script src="js/renderers/CanvasRenderer.js"></script>
 		<script src="obj/Bird.js"></script>
 		<script src="js/movement.js"></script>
-
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/lib/adapter.js"></script>
 		<script>
 			var SCREEN_WIDTH = window.innerWidth,
 			SCREEN_HEIGHT = window.innerHeight,

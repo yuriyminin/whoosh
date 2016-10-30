@@ -32,6 +32,7 @@ $().ready(function() {
                     }, 200);
                     $('#send').hide();
                     $('#type-wrap').hide();
+                    $('#video').hide();
                 });
 
 
@@ -44,6 +45,7 @@ $().ready(function() {
             $('.curvable').removeClass('curved');
             $('#send').show();
             $('#type-wrap').delay(800).show(0);
+            $('#video').show();
   });
 
   $('#get').click(function() {
