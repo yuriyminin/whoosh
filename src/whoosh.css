@@ -14,8 +14,9 @@
   width:      100%;
   height:     100%;
   z-index:    10;
-  top:        50px;
-  left:       50px;
+  margin:auto;
+  top: 20%;
+  left: 0%;
   position:   fixed;
   font-size: 40px;
   text-align: center;
@@ -810,5 +811,12 @@ h3 {
   }
   #plate{
     width: 300px;
+  }
+  .sendmessage {
+    margin:auto;
+    top: 50%;
+    left: 0%;
+    position: fixed;
+    font-size: 16px;
   }
 }
