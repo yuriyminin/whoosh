@@ -5,14 +5,49 @@
     -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
+#view{
+    z-index: 3;
+    background: hsl(0, 0%, 88%);
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    width: 400px;
+    height: 260px;
+    /* top: 300px; */
+    -webkit-transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
+    -ms-transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-in-out;
+    margin: auto;
+    display: none;
+}
 #view.read{
-  outline: none;
+  /*outline: none;
   resize: none;
   background: transparent;
-  border-color: transparent;
-  display: none;
+  border-color: transparent;*/
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  display: block;
 }
-
 .message{
   outline: none;
   resize: none;
@@ -114,7 +149,6 @@ canvas {
     display: block;
     margin: auto;
 }
-
 #plate {
     z-index:3;
     background: hsl(0, 0%, 88%);
@@ -136,7 +170,7 @@ canvas {
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
     width: 400px;
-    /* height: 260px; */
+    height: 260px;
     top: 300px;
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
@@ -608,4 +642,10 @@ vertical-align: bottom;
     bottom: 0;
     width: 30px;
     height: 30px;
+}
+#start{
+    display: none;
+}
+#start.read{
+    display: none;
 }
