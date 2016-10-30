@@ -1,6 +1,12 @@
 //Of course I can code this more programatically, but this seems good to me.
 $().ready(function() {
+              var state = 'add';
                 $('.send').click(function() {
+                  if(state == 'add'){
+                    $('.sendmessage').show();
+                  }
+                  if(state == 'add'){
+                    console.log("ADDING")
                   console.log(document.getElementById("planetext").value);
                   $.ajax({
                       url: '/planes',
@@ -13,6 +19,7 @@ $().ready(function() {
                           alert(msg);
                       }
                                           });
+                  }
                   //have the clear value after the form successfully sends the data.
                   //$('#planetext').val('').empty();
                     setTimeout(function() {
@@ -26,6 +33,7 @@ $().ready(function() {
                                 setTimeout(function() {
                                     $('#container').addClass('fly_away');
                                     document.getElementById("planetext").value = '';
+                                    $('.sendmessage').hide();
                                 }, 600);
                             }, 2000);
                         }, 2800);
@@ -37,18 +45,21 @@ $().ready(function() {
 
 
   $('#add').click(function() {
-            document.querySelector("#planetext").style.boxShadow = '0 0 10px #525354';
+            state = 'add';
+            document.querySelector("#planetext").style.boxShadow = '0 0 12px white';
             document.querySelector("#planetext").style.display = 'block';
             $('#start'). removeClass('read');
             $('#plate').addClass('front');
             $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
             $('.curvable').removeClass('curved');
-            $('#send').show();
             $('#type-wrap').delay(800).show(0);
-            $('#video').show();
+            setTimeout(function() {
+                  $('#send').show();
+            }, 700);
   });
 
   $('#get').click(function() {
+    state = 'get';
     $.get("/plane", function(data, status){
         $('#start').text(JSON.parse(data)[0]);
         console.log(JSON.parse(data)[0]);
@@ -59,7 +70,9 @@ $().ready(function() {
       $('#planetext').removeClass('display');
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
-      $('#send').hide();
       $('#type-wrap').hide();
+      setTimeout(function() {
+            $('#send').show();
+      }, 700);
           });
   });

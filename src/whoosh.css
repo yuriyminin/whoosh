@@ -9,6 +9,18 @@
     -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
+
+.sendmessage{
+  width:      100%;
+  height:     100%;
+  z-index:    10;
+  top:        50px;
+  left:       50px;
+  position:   fixed;
+  font-size: 40px;
+  text-align: center;
+  display: none;
+}
 #view{
     z-index: 3;
     background: hsl(0, 0%, 88%);
@@ -59,6 +71,21 @@
   /* border-radius: 10px; */
   border-color: transparent;
   box-shadow: 0 0 12px white;
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  /* left: 0; */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-font-smoothing: subpixel-antialiased;
+  -ms-font-smoothing: subpixel-antialiased;
+  -o-font-smoothing: subpixel-antialiased;
+  font-smoothing: subpixel-antialiased;
+  font-size: 16px;
+  font-family: Helvetica, Arial, Verdana;
+  line-height: 20px;
 }
 
 .btn-floating {
@@ -431,24 +458,6 @@ body {
     transform: rotateY(180deg);
 }
 
-.message {
-    width: 50%;
-    padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 140px;
-    /* left: 0; */
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-font-smoothing: subpixel-antialiased;
-    -ms-font-smoothing: subpixel-antialiased;
-    -o-font-smoothing: subpixel-antialiased;
-    font-smoothing: subpixel-antialiased;
-    font-size: 16px;
-    font-family: Helvetica, Arial, Verdana;
-    line-height: 20px;
-}
 
 .send {
     -webkit-appearance: none;
@@ -644,7 +653,7 @@ body {
 #center{
 display: block;
   margin: 0 auto;
-  width: 50%;  
+  width: 50%;
 }
 #codepen_link{
 text-decoration: none;
