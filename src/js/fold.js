@@ -19,6 +19,15 @@ $().ready(function() {
                             }, 2000);
                         }, 2800);
                     }, 200);
+                    $.post("/planes",
+                    {
+                      message: "LOLS THIS IS A MESSAGE HAHasfdajsdflj",
+                      emotion: "Angry"
+                    },
+                    function(data,status){
+                        console.log(data);
+                    });
+
                 });
 
 
@@ -36,5 +45,8 @@ $().ready(function() {
       $('#view').addClass('read');
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
+      $.get("/planes", function(data, status){
+        console.log(data);
+      });
           });
   });
