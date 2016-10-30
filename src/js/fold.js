@@ -2,8 +2,19 @@
 $().ready(function() {
                 $('.send').click(function() {
                   console.log(document.getElementById("planetext").value);
+                  $.ajax({
+                      url: '/planes',
+                      type: 'POST',
+                      data: JSON.stringify({message : document.getElementById("planetext").value, emotion : "angry"}),
+                      contentType: 'application/json; charset=utf-8',
+                      dataType: 'json',
+                      async: false,
+                      success: function(msg) {
+                          alert(msg);
+                      }
+                                          });
                   //have the clear value after the form successfully sends the data.
-                  $('#planetext').val('').empty();
+                  //$('#planetext').val('').empty();
                     setTimeout(function() {
                         $('#plate').removeClass('front');
                         $('#container').removeClass('beginning');
@@ -19,31 +30,26 @@ $().ready(function() {
                             }, 2000);
                         }, 2800);
                     }, 200);
-                    $.ajax({
-                        url: '/planes',
-                        type: 'POST',
-                        data: JSON.stringify({"message":document.getElementById("planetext").value.toString(), "emotion":"angry"}),
-                        contentType: 'application/json; charset=utf-8',
-                        dataType: 'json',
-                        async: false,
-                        success: function(msg) {
-                            alert(msg);
-                        }
-                    });
+                    $('#send').hide();
+                    $('#type-wrap').hide();
                 });
 
 
   $('#add').click(function() {
             document.querySelector("#planetext").style.boxShadow = '0 0 10px #525354';
             document.querySelector("#planetext").style.display = 'block';
+            $('#start'). removeClass('read');
             $('#plate').addClass('front');
             $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
             $('.curvable').removeClass('curved');
+            $('#send').show();
+            $('#type-wrap').show();
   });
 
   $('#get').click(function() {
     $.get("/plane", function(data, status){
-        $('#start').text(data);
+        $('#start').text(JSON.parse(data)[0]);
+        console.log(JSON.parse(data)[0]);
     });
     document.querySelector("#planetext").style.display = 'none';
       $('#plate').addClass('front');
