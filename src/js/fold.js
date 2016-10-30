@@ -21,7 +21,7 @@ $().ready(function() {
                     }, 200);
                     $.post("/planes",
                     {
-                      message: "LOLS THIS IS A MESSAGE HAHasfdajsdflj",
+                      message: document.getElementById("planetext").value,
                       emotion: "Angry"
                     },
                     function(data,status){
@@ -39,14 +39,15 @@ $().ready(function() {
   });
 
   $('#get').click(function() {
+    $.get("/planes", function(data, status){
+      document.getElementById("planetext").value = data;
+    });
       document.querySelector("#planetext").style.boxShadow = 'none';
       $('.message').attr('contenteditable', 'false');
       console.log(document.getElementById("planetext").contentEditable);
       $('#view').addClass('read');
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
-      $.get("/planes", function(data, status){
-        console.log(data);
-      });
+
           });
   });
