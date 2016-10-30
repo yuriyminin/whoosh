@@ -21,7 +21,7 @@ $().ready(function() {
                     }, 200);
                     $.post("/planes",
                     {
-                      message: document.getElementById("planetext").value,
+                      message: document.getElementById("planetext").value.toString(),
                       emotion: "Angry"
                     },
                     function(data,status){
@@ -33,21 +33,22 @@ $().ready(function() {
 
   $('#add').click(function() {
             document.querySelector("#planetext").style.boxShadow = '0 0 10px #525354';
+            document.querySelector("#planetext").style.display = 'block';
             $('#plate').addClass('front');
             $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
             $('.curvable').removeClass('curved');
   });
 
   $('#get').click(function() {
-    $.get("/planes", function(data, status){
-      document.getElementById("planetext").value = data;
+    $.get("/plane", function(data, status){
+      console.log(data);
+        $('#start').text(data);
     });
-      document.querySelector("#planetext").style.boxShadow = 'none';
-      $('.message').attr('contenteditable', 'false');
-      console.log(document.getElementById("planetext").contentEditable);
-      $('#view').addClass('read');
+    document.querySelector("#planetext").style.display = 'none';
+      $('#plate').addClass('front');
+      $('#start').addClass('read');
+      $('#planetext').removeClass('display');
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
-
           });
   });
