@@ -58,7 +58,7 @@
   background: transparent;
   /* border-radius: 10px; */
   border-color: transparent;
-  box-shadow: 0 0 4px #525354;
+  box-shadow: 0 0 12px white;
 }
 
 .btn-floating {
@@ -166,7 +166,7 @@ canvas {
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -176,6 +176,8 @@ canvas {
     width: 360px;
     height: 270px;
     top: 300px;
+    border-color: transparent;
+    box-shadow: 0 0 78px white;
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
     -o-transition: all 0.8s ease-in-out;
@@ -430,19 +432,20 @@ body {
 }
 
 .message {
-    /* width: 100%; */
+    width: 50%;
     padding: 10px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     height: 140px;
+    /* left: 0; */
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-font-smoothing: subpixel-antialiased;
     -ms-font-smoothing: subpixel-antialiased;
     -o-font-smoothing: subpixel-antialiased;
     font-smoothing: subpixel-antialiased;
-    font-size: 14px;
+    font-size: 16px;
     font-family: Helvetica, Arial, Verdana;
     line-height: 20px;
 }
@@ -667,16 +670,16 @@ vertical-align: bottom;
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px ;
+  font-size: 18px;
   color: black;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   margin: 0;
   width: 100%;
-  top: -30px;
+  top: 12px;
 }
 
 .visually-hidden {
@@ -722,17 +725,33 @@ h3 {
   }
 }
 #video {
-  border: 1px solid black;
-  box-shadow: 2px 2px 3px black;
-  width: 120px;
-  height: 90px;
+  border: 1px solid hsl(0, 0%, 88%);
+  /* box-shadow: 2px 2px 3px black; */
+  width: 150px;
+  border-color: transparent;
+  /* box-shadow: 30px 30px 180px #9398a0; */
+  position: absolute;
+  right: 13px;
+  bottom: 110px;
+  height: 120px;
+  /* -webkit-mask-image: -webkit-radial-gradient(circle, hsl(0, 0%, 88%) 10%, hsl(0, 0%, 88%) 10%); */
+  /* -webkit-transform: rotate(0.000001deg); */
+  /* -webkit-border-radius: 10px; */
+  -moz-border-radius: 10px;
+  /* border-radius: 10px; */
+  /* overflow: hidden; */
+  /* border-radius: 885px; */
+  /* -webkit-mask-image: -webkit-radial-gradient(circle, #9398a0 100%, #9398a0 100%); */
 }
 
 #photo {
-  border: 1px solid black;
-  box-shadow: 2px 2px 3px black;
-  width: 120px;
-  height: 90px;
+  /* border: 1px solid black; */
+  /* box-shadow: 2px 2px 3px black; */
+  width: 130px;
+  height: 130px;
+  border-color: transparent;
+  border-radius: 105px;
+  box-shadow: 30px 30px 180px white;
 }
 
 #canvas {
@@ -767,4 +786,8 @@ h3 {
   font-size: 16px;
   font-family: "Lucida Grande", "Arial", sans-serif;
   width: 760px;
+}
+#whoosh-logo{
+    width: 185px;
+    height: 80px;
 }
