@@ -19,15 +19,17 @@ $().ready(function() {
                             }, 2000);
                         }, 2800);
                     }, 200);
-                    $.post("/planes",
-                    {
-                      message: document.getElementById("planetext").value.toString(),
-                      emotion: "Angry"
-                    },
-                    function(data,status){
-                        console.log(data);
+                    $.ajax({
+                        url: '/planes',
+                        type: 'POST',
+                        data: JSON.stringify({"message":document.getElementById("planetext").value.toString(), "emotion":"angry"}),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        async: false,
+                        success: function(msg) {
+                            alert(msg);
+                        }
                     });
-
                 });
 
 
@@ -41,7 +43,6 @@ $().ready(function() {
 
   $('#get').click(function() {
     $.get("/plane", function(data, status){
-      console.log(data);
         $('#start').text(data);
     });
     document.querySelector("#planetext").style.display = 'none';

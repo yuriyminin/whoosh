@@ -92,6 +92,7 @@ app.get('/neutral', function(req, res) {
 });
 
 app.post('/planes', function (req, res) {
+  console.log(req.body);
   global.planes.push([req.body.message,req.body.emotion]);
   console.log(global.planes);
   res.send('Success');
