@@ -20,6 +20,22 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+
+var tone_analyzer = new ToneAnalyzerV3({
+  username: 'e3baf6c1-b0fa-4874-ba72-65acc8b53e7b',
+  password: 'PZe6vfP63Ecc',
+  version_date: '2016-05-19'
+});
+
+tone_analyzer.tone({ text: 'I Love Tacos so Much' },
+  function(err, tone) {
+    if (err)
+      console.log(err);
+    else
+      console.log(JSON.stringify(tone, null, 2));
+});
+
 global.planes = [];
 
 app.get('/', function(req, res){
@@ -95,6 +111,11 @@ app.post('/planes', function (req, res) {
   console.log(req.body)
   global.planes.push([req.body.message,req.body.emotion]);
   console.log(global.planes);
+  res.send('Success');
+});
+
+app.post('/image', function (req, res) {
+  console.log(req.body);
   res.send('Success');
 });
 

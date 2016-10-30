@@ -112,26 +112,18 @@
       context.drawImage(video, 0, 0, width, height);
 
       var data = canvas.toDataURL('image/png');
+      var raw_image_data = data.replace(/^data\:image\/\w+\;base64\,/, '');
       photo.setAttribute('src', data);
-      var index = data.indexOf(",");
-      var binaryImage = _base64ToArrayBuffer(data.substring(index+1));
-      console.log(binaryImage);
       $.ajax({
-            url: "https://api.projectoxford.ai/emotion/v1.0/recognize?",
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","application/octet-stream");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","175aacae121c4d6799febc6a16dd05ef");
-            },
-            type: "POST",
-            // Request body
-            data: binaryImage,
-        })
-        .done(function(data) {
-            alert("success");
-        })
-        .fail(function() {
-            alert("error");
+          url: '/planes',
+          type: 'POST',
+          data: atob(raw_image_data),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          async: false,
+          success: function(msg) {
+              alert(msg);
+          }
         });
     } else {
       clearphoto();
