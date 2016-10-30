@@ -1,4 +1,4 @@
-# story-collab
+# WHOOSH
 Collaborative storytelling app
 
 ##Step 1
@@ -7,8 +7,8 @@ https://nodejs.org/en/download/
 
 ##Step 2
 #Clone Repo
-cd story-collab
+cd whoosh
 
 ##Step 3
-npm install
-node index.js
+npm install <br />
+node app.js
