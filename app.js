@@ -28,14 +28,6 @@ var tone_analyzer = new ToneAnalyzerV3({
   version_date: '2016-05-19'
 });
 
-tone_analyzer.tone({ text: 'I Love Tacos so Much' },
-  function(err, tone) {
-    if (err)
-      console.log(err);
-    else
-      console.log(JSON.stringify(tone, null, 2));
-});
-
 global.planes = [];
 
 app.get('/', function(req, res){
@@ -52,10 +44,10 @@ app.get('/plane', function(req, res) {
   res.send(JSON.stringify(rand));
 });
 
-app.get('/happy', function(req, res) {
+app.get('/joy', function(req, res) {
   array = [];
   for (plane in global.planes) {
-    if (global.planes[plane][1] === "happy") {
+    if (global.planes[plane][1] === "joy") {
       array.push(global.planes[plane]);
     }
   }
@@ -63,10 +55,10 @@ app.get('/happy', function(req, res) {
   res.send(JSON.stringify(rand));
 });
 
-app.get('/angry', function(req, res) {
+app.get('/anger', function(req, res) {
   array = [];
   for (plane in global.planes) {
-    if (global.planes[plane][1] === "angry") {
+    if (global.planes[plane][1] === "anger") {
       array.push(global.planes[plane]);
     }
   }
@@ -74,10 +66,10 @@ app.get('/angry', function(req, res) {
   res.send(JSON.stringify(rand));
 });
 
-app.get('/scared', function(req, res) {
+app.get('/fear', function(req, res) {
   array = [];
   for (plane in global.planes) {
-    if (global.planes[plane][1] === "scared") {
+    if (global.planes[plane][1] === "fear") {
       array.push(global.planes[plane]);
     }
   }
@@ -85,10 +77,10 @@ app.get('/scared', function(req, res) {
   res.send(JSON.stringify(rand));
 });
 
-app.get('/sad', function(req, res) {
+app.get('/sadness', function(req, res) {
   array = [];
   for (plane in global.planes) {
-    if (global.planes[plane][1] === "sad") {
+    if (global.planes[plane][1] === "sadness") {
       array.push(global.planes[plane]);
     }
   }
@@ -96,26 +88,45 @@ app.get('/sad', function(req, res) {
   res.send(JSON.stringify(rand));
 });
 
-app.get('/neutral', function(req, res) {
+app.get('/disgust', function(req, res) {
   array = [];
   for (plane in global.planes) {
-    if (global.planes[plane][1] === "neutral") {
+    if (global.planes[plane][1] === "disgust") {
       array.push(global.planes[plane]);
     }
   }
   var rand = array[Math.floor(Math.random() * array.length)];
   res.send(JSON.stringify(rand));
 });
+
+app.post('/analyze', function (req, res) {
+  console.log(req.body);
+  tone_analyzer.tone({ text: req.body.message },
+    function(err, tone) {
+      if (err)
+        console.log(err);
+      else
+        var max = 0;
+        var emotion = "";
+        for (i in tone.document_tone.tone_categories[0].tones) {
+          if (tone.document_tone.tone_categories[0].tones[i].score > max ) {
+            max = tone.document_tone.tone_categories[0].tones[i].score;
+            emotion = tone.document_tone.tone_categories[0].tones[i].tone_id;
+          }
+        }
+        console.log(max);
+        console.log(emotion);
+        console.log(tone.document_tone.tone_categories[0]);
+        res.send(emotion);
+  });
+});
+
 
 app.post('/planes', function (req, res) {
-  console.log(req.body)
+  console.log(req.body);
+  console.log(req.body.message);
   global.planes.push([req.body.message,req.body.emotion]);
   console.log(global.planes);
-  res.send('Success');
-});
-
-app.post('/image', function (req, res) {
-  console.log(req.body);
   res.send('Success');
 });
 
