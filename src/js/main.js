@@ -53,14 +53,14 @@
     video.addEventListener('canplay', function(ev){
       if (!streaming) {
         height = video.videoHeight / (video.videoWidth/width);
-      
+
         // Firefox currently has a bug where the height can't be read from
         // the video, so we will make assumptions if this happens.
-      
+
         if (isNaN(height)) {
           height = width / (4/3);
         }
-      
+
         video.setAttribute('width', width);
         video.setAttribute('height', height);
         canvas.setAttribute('width', width);
@@ -73,7 +73,7 @@
       takepicture();
       ev.preventDefault();
     }, false);
-    
+
     clearphoto();
   }
 
@@ -88,7 +88,16 @@
     var data = canvas.toDataURL('image/png');
     photo.setAttribute('src', data);
   }
-  
+
+  function _base64ToArrayBuffer(base64) {
+      var binary_string =  window.atob(base64);
+      var len = binary_string.length;
+      var bytes = new Uint8Array( len );
+      for (var i = 0; i < len; i++)        {
+          bytes[i] = binary_string.charCodeAt(i);
+      }
+      return bytes.buffer;
+  }
   // Capture a photo by fetching the current contents of the video
   // and drawing it into a canvas, then converting that to a PNG
   // format data URL. By drawing it on an offscreen canvas and then
@@ -101,9 +110,29 @@
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
-    
+
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
+      var index = data.indexOf(",");
+      var binaryImage = _base64ToArrayBuffer(data.substring(index+1));
+      console.log(binaryImage);
+      $.ajax({
+            url: "https://api.projectoxford.ai/emotion/v1.0/recognize?",
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/octet-stream");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","175aacae121c4d6799febc6a16dd05ef");
+            },
+            type: "POST",
+            // Request body
+            data: binaryImage,
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
     } else {
       clearphoto();
     }
@@ -120,4 +149,3 @@ $(".type-wrap span:last").typed({
 	loop: false,
 	contentType: 'html'
 });
-
