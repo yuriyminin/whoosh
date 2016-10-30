@@ -2,6 +2,10 @@
 $().ready(function() {
               var state = 'add';
                 $('.send').click(function() {
+                  if (state == 'get') {
+                    $('#get').show();
+                    $('#dropdown').show();
+                  }
                   var feeling;
                   if(state == 'add'){
                     $.ajax({
@@ -65,6 +69,7 @@ $().ready(function() {
 
 
   $('#add').click(function() {
+            $('#screencover').text("");
             state = 'add';
             document.querySelector("#planetext").style.boxShadow = '0 0 12px white';
             document.querySelector("#planetext").style.display = 'block';
@@ -91,8 +96,111 @@ $().ready(function() {
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
-          });
+    });
+
+ $('#angry').click(function() {
+    state = 'get';
+    $.get("/angry", function(data, status){
+        $('#start').text(JSON.parse(data)[0]);
+        console.log(JSON.parse(data)[0]);
+    });
+    document.querySelector("#planetext").style.display = 'none';
+      $('#plate').addClass('front');
+      $('#start').addClass('read');
+      $('#planetext').removeClass('display');
+      $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
+      $('.curvable').removeClass('curved');
+      $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
+      setTimeout(function() {
+            $('#send').show();
+      }, 700);
+    });
+
+
+$('#disgust').click(function() {
+    state = 'get';
+    $.get("/disgust", function(data, status){
+        $('#start').text(JSON.parse(data)[0]);
+        console.log(JSON.parse(data)[0]);
+    });
+    document.querySelector("#planetext").style.display = 'none';
+      $('#plate').addClass('front');
+      $('#start').addClass('read');
+      $('#planetext').removeClass('display');
+      $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
+      $('.curvable').removeClass('curved');
+      $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
+      setTimeout(function() {
+            $('#send').show();
+      }, 700);
   });
+
+$('#fear').click(function() {
+    state = 'get';
+    $.get("/fear", function(data, status){
+        $('#start').text(JSON.parse(data)[0]);
+        console.log(JSON.parse(data)[0]);
+    });
+    document.querySelector("#planetext").style.display = 'none';
+      $('#plate').addClass('front');
+      $('#start').addClass('read');
+      $('#planetext').removeClass('display');
+      $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
+      $('.curvable').removeClass('curved');
+      $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
+      setTimeout(function() {
+            $('#send').show();
+      }, 700);
+  });
+
+$('#joy').click(function() {
+    state = 'get';
+    $.get("/joy", function(data, status){
+        $('#start').text(JSON.parse(data)[0]);
+        console.log(JSON.parse(data)[0]);
+    });
+    document.querySelector("#planetext").style.display = 'none';
+      $('#plate').addClass('front');
+      $('#start').addClass('read');
+      $('#planetext').removeClass('display');
+      $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
+      $('.curvable').removeClass('curved');
+      $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
+      setTimeout(function() {
+            $('#send').show();
+      }, 700);
+    });
+
+$('#sadness').click(function() {
+    state = 'get';
+    $.get("/sadness", function(data, status){
+        $('#start').text(JSON.parse(data)[0]);
+        console.log(JSON.parse(data)[0]);
+    });
+    document.querySelector("#planetext").style.display = 'none';
+      $('#plate').addClass('front');
+      $('#start').addClass('read');
+      $('#planetext').removeClass('display');
+      $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
+      $('.curvable').removeClass('curved');
+      $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
+      setTimeout(function() {
+            $('#send').show();
+      }, 700);
+    });
+});
