@@ -43,7 +43,7 @@ $().ready(function() {
             $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
             $('.curvable').removeClass('curved');
             $('#send').show();
-            $('#type-wrap').show();
+            $('#type-wrap').delay(800).show(0);
   });
 
   $('#get').click(function() {
@@ -57,5 +57,7 @@ $().ready(function() {
       $('#planetext').removeClass('display');
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
+      $('#send').hide();
+      $('#type-wrap').hide();
           });
   });
