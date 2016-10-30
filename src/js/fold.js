@@ -2,8 +2,28 @@
 $().ready(function() {
               var state = 'add';
                 $('.send').click(function() {
+                  var feeling;
                   if(state == 'add'){
-                    $('.sendmessage').show();
+                    $.ajax({
+                        url: '/analyze',
+                        type: 'POST',
+                        data: JSON.stringify({message : document.getElementById("planetext").value, emotion : ""}),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'text',
+                        async: false,
+                        success: function(msg) {
+                          feeling = msg;
+                            if(msg == 'joy'){
+                                $('#screencover').text("Glad you're feeling " + msg + "!");
+                            }else{
+                                $('#screencover').text("Sorry you're feeling " + msg + ".");
+                            }
+                        },
+
+                                            });
+                      setTimeout(function() {
+                          $('.sendmessage').show();
+                      }, 600);
                   }
                   if(state == 'add'){
                     console.log("ADDING")
@@ -11,14 +31,14 @@ $().ready(function() {
                   $.ajax({
                       url: '/planes',
                       type: 'POST',
-                      data: JSON.stringify({message : document.getElementById("planetext").value, emotion : "angry"}),
+                      data: JSON.stringify({message : document.getElementById("planetext").value, emotion : feeling}),
                       contentType: 'application/json; charset=utf-8',
                       dataType: 'json',
                       async: false,
                       success: function(msg) {
                           alert(msg);
                       }
-                                          });
+                    });
                   }
                   //have the clear value after the form successfully sends the data.
                   //$('#planetext').val('').empty();
