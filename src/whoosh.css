@@ -9,9 +9,9 @@ textarea{
   outline: none;
   resize: none;
   background: transparent;
-  border-radius: 10px;
-  border-color: transparent;;
-  box-shadow: 0 0 10px #525354;
+  /* border-radius: 10px; */
+  border-color: transparent;
+  box-shadow: 0 0 4px #525354;
 }
 
 .btn-floating {
@@ -20,7 +20,7 @@ textarea{
    z-index: 1;
 }
 canvas {
-    z-index: 0;
+    z-index: -100;
 }
 .wing {
     background: url('wing1.png') center center no-repeat;
@@ -384,9 +384,8 @@ body {
 }
 
 .message {
-    width: 100%;
+    /* width: 100%; */
     padding: 10px;
-
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -408,18 +407,12 @@ body {
     -ms-appearance: none;
     -o-appearance: none;
     appearance: none;
-    border-radius: 10pxs;
-
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 2px solid hsl(194, 100%, 72%);
-    margin: 15px 0;
-    padding: 10px;
-    font-size: 20px;
-    background-color: white;
+    display: block;
 }
 
 .send:active {
@@ -428,14 +421,11 @@ body {
     -o-transform: scale(0.85);
     -ms-transform: scale(0.85);
     transform: scale(0.85);
-
     -webkit-transition: all 10ms ease-in-out;
     -moz-transition: all 10ms ease-in-out;
     -o-transition: all 10ms ease-in-out;
     -ms-transition: all 10ms ease-in-out;
     transition: all 10ms ease-in-out;
-    background-color: white;
-    border: 2px solid hsl(194, 30%, 55%);
 }
 
 .curvable.top_left {
