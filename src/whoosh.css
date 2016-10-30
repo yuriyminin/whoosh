@@ -801,3 +801,14 @@ h3 {
     width: 185px;
     height: 80px;
 }
+@media (max-width:601px){
+  #whoosh-logo{
+    display:none;
+  }
+  #buttons {
+    width:100%;
+  }
+  #plate{
+    width: 300px;
+  }
+}
