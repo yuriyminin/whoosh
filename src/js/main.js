@@ -1,3 +1,4 @@
+
 (function() {
   // The width and height of the captured photo. We will set the
   // width to the value defined here, but the height will be
@@ -23,7 +24,7 @@
     video = document.getElementById('video');
     canvas = document.getElementById('canvas');
     photo = document.getElementById('photo');
-    startbutton = document.getElementById('startbutton');
+    startbutton = document.getElementById('send');
 
     navigator.getMedia = ( navigator.getUserMedia ||
                            navigator.webkitGetUserMedia ||
@@ -112,3 +113,11 @@
   // once loading is complete.
   window.addEventListener('load', startup, false);
 })();
+
+$(".type-wrap span:last").typed({
+	strings: ["^1000 Write down how you are feeling right now..."],
+	typeSpeed: 50,
+	loop: false,
+	contentType: 'html'
+});
+

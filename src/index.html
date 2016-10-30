@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 
-		<title>three.js canvas - geometry - birds</title>
+		<title>Whoosh ✈️</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -35,6 +35,7 @@
 	</head>
 	<body>
 	<div id="info"><a href="http://www.google.com"><img src="https://s4.postimg.org/6k77z0db1/829_PM_Logo.png" width=225px height=100px align=left 10px></a></div>
+
 		<!--Import jQuery before materialize.js-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/materialize.js"></script>
@@ -44,26 +45,9 @@
 			<a class="btn-floating btn-large waves-effect waves-light red" id = "add"><i class="material-icons">add</i></a>
 			<a class="btn-floating btn-large waves-effect waves-light red" id = "get"><i class="material-icons">send</i></a>
 		</div>
-			<div id="center">
-<!-- 				<div id="videoCanvas">
-			    	<video id="video" autoplay></video>
-			    	<canvas id="photo"></canvas>
-			  	</div>
-			 	<div id="buttons">
-			    	<button id="snap">Snap</button><span> then </span><button id="send">Send</button>
-			    	<span> or </span>
-			    	<button id="snapAndSend">Snap &amp; Send</button>
-			  	</div>
-				<div id="incoming">
-					<h2>Incoming photos</h2>
-					<div id="trail"></div>
-				</div> -->
-
-  <div class="output">
-    <img id="photo" alt="The screen capture will appear in this box.">
-  </div>
-  </div>
-			</div>
+		  <div class="output">
+		    <img id="photo" alt="The screen capture will appear in this box.">
+		  </div>
 		<div id="plate" class="front">
 			<div class="camera">
 				<video id="video">Video stream not available.</video>
@@ -71,10 +55,15 @@
 				<canvas id="canvas">
 				</canvas>
 			</div>
+			<div class="type-wrap" id="type-wrap">
+				<h3>
+					<span class="visually-hidden">This is a Test and another line.</span>
+					<span role="presentation" aria-hidden="true"></span>
+				</h3>
+			</div>
 			<textarea class="message" id="planetext"></textarea>
 			<div id="buttons">
-				<a class="btn-floating btn-large waves-effect waves-light blue" id = "get"><i class="material-icons send">send</i></a>
-				<a class="btn-floating btn-large waves-effect waves-light red" id = "startbutton"><i class="material-icons">add</i></a>
+				<a class="btn-floating btn-large waves-effect waves-light blue" id = "send"><i class="material-icons send">publish</i></a>
 			</div>
 			<p id="start" class="fromServer"></p>
 		</div>
@@ -101,7 +90,6 @@
 		<script src="js/renderers/CanvasRenderer.js"></script>
 		<script src="obj/Bird.js"></script>
 		<script src="js/movement.js"></script>
-		<script src="js/main.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="js/lib/adapter.js"></script>
 		<script>
@@ -220,5 +208,7 @@
 				renderer.render( scene, camera );
 			}
 		</script>
+		<script src="js/typed.js"></script>
+		<script src="js/main.js"></script>
 	</body>
 </html>

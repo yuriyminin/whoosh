@@ -4,9 +4,10 @@
   "description": "CodeRED 2016",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "socket.io": "^1.5.1",
-    "node-static": "0.7.7"
+    "firebase": "^3.5.2",
+    "socket.io": "^1.5.1"
   },
   "devDependencies": {},
   "scripts": {
