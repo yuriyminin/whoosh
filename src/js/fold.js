@@ -3,6 +3,17 @@ $().ready(function() {
               var state = 'add';
                 $('.send').click(function() {
                   if(state == 'add'){
+                    $.ajax({
+                        url: '/analyze',
+                        type: 'POST',
+                        data: JSON.stringify({message : document.getElementById("planetext").value, emotion : ""}),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        async: false,
+                        success: function(msg) {
+                            console.log(msg);
+                        }
+                                            });
                     $('.sendmessage').show();
                   }
                   if(state == 'add'){
