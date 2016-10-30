@@ -44,12 +44,40 @@
 			<a class="btn-floating btn-large waves-effect waves-light red" id = "add"><i class="material-icons">add</i></a>
 			<a class="btn-floating btn-large waves-effect waves-light red" id = "get"><i class="material-icons">send</i></a>
 		</div>
+			<div id="center">
+<!-- 				<div id="videoCanvas">
+			    	<video id="video" autoplay></video>
+			    	<canvas id="photo"></canvas>
+			  	</div>
+			 	<div id="buttons">
+			    	<button id="snap">Snap</button><span> then </span><button id="send">Send</button>
+			    	<span> or </span>
+			    	<button id="snapAndSend">Snap &amp; Send</button>
+			  	</div>
+				<div id="incoming">
+					<h2>Incoming photos</h2>
+					<div id="trail"></div>
+				</div> -->
 
+  <div class="output">
+    <img id="photo" alt="The screen capture will appear in this box.">
+  </div>
+  </div>
+			</div>
 		<div id="plate" class="front">
-								<textarea class="message" id="planetext"></textarea>
-								<a class="btn-floating btn-large waves-effect waves-light blue" id = "get"><i class="material-icons send">send</i></a>
-								<p id="start" class="fromServer"></p>
-					</div>
+			<div class="camera">
+				<video id="video">Video stream not available.</video>
+<!-- 				<button id="startbutton">Take photo</button> -->
+				<canvas id="canvas">
+				</canvas>
+			</div>
+			<textarea class="message" id="planetext"></textarea>
+			<div id="buttons">
+				<a class="btn-floating btn-large waves-effect waves-light blue" id = "get"><i class="material-icons send">send</i></a>
+				<a class="btn-floating btn-large waves-effect waves-light red" id = "startbutton"><i class="material-icons">add</i></a>
+			</div>
+			<p id="start" class="fromServer"></p>
+		</div>
 					<div id ="view">						
 						<a class="btn-floating btn-large waves-effect waves-light blue" id = "get"><i class="material-icons send">send</i></a>
 					</div>
@@ -74,6 +102,8 @@
 		<script src="obj/Bird.js"></script>
 		<script src="js/movement.js"></script>
 		<script src="js/main.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/lib/adapter.js"></script>
 		<script>
 			var SCREEN_WIDTH = window.innerWidth,
 			SCREEN_HEIGHT = window.innerHeight,
