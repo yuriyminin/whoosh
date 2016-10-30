@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+
 		<title>three.js canvas - geometry - birds</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -15,6 +16,14 @@
 				margin: 0px;
 				overflow: hidden;
 			}
+			#buttons{
+				width: 50%;
+				margin: 0 auto;
+			}
+
+			#info{
+				padding: 0em 0em 0em 0em;
+			}
 		</style>
 		<!--Import Google Icon Font-->
 		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,14 +34,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
+	<div id="info"><a href="http://www.google.com"><img src="https://s4.postimg.org/6k77z0db1/829_PM_Logo.png" width=225px height=100px align=left 10px></a></div>
 		<!--Import jQuery before materialize.js-->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/materialize.js"></script>
 		<script type="text/javascript" src="js/fold.js"></script>
 
-		<a class="btn-floating btn-large waves-effect waves-light red" id = "add"><i class="material-icons">add</i></a>
-		<a class="btn-floating btn-large waves-effect waves-light red" id = "get"><i class="material-icons">send</i></a>
-		<div id="info"><a href="http://whoosh.org" target="_blank">WHOOSH LOGO HERE</a></div>
+		<div id="buttons">
+			<a class="btn-floating btn-large waves-effect waves-light red" id = "add"><i class="material-icons">add</i></a>
+			<a class="btn-floating btn-large waves-effect waves-light red" id = "get"><i class="material-icons">send</i></a>
+		</div>
 		<div id="plate" class="front">
 								<textarea class="message" id="planetext">
 								</textarea>
