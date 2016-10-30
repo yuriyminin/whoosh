@@ -51,16 +51,11 @@ app.get('/joy', function(req, res) {
       array.push(global.planes[plane]);
     }
   }
-  var rand = array[Math.floor(Math.random() * array.length)];
-  res.send(JSON.stringify(rand));
-});
-
-app.get('/anger', function(req, res) {
-  array = [];
-  for (plane in global.planes) {
-    if (global.planes[plane][1] === "anger") {
-      array.push(global.planes[plane]);
-    }
+  emptyMessage = ["None of that type currently exists", "nothing"];
+  if(array.length > 0){   
+      //this array is not empty 
+  }else{
+    array.push(emptyMessage);
   }
   var rand = array[Math.floor(Math.random() * array.length)];
   res.send(JSON.stringify(rand));
@@ -73,6 +68,12 @@ app.get('/fear', function(req, res) {
       array.push(global.planes[plane]);
     }
   }
+  emptyMessage = ["None of that type currently exists", "nothing"];
+  if(array.length > 0){   
+      //this array is not empty 
+  }else{
+    array.push(emptyMessage);
+  }
   var rand = array[Math.floor(Math.random() * array.length)];
   res.send(JSON.stringify(rand));
 });
@@ -84,6 +85,12 @@ app.get('/sadness', function(req, res) {
       array.push(global.planes[plane]);
     }
   }
+  emptyMessage = ["None of that type currently exists", "nothing"];
+  if(array.length > 0){   
+      //this array is not empty 
+  }else{
+    array.push(emptyMessage);
+  }
   var rand = array[Math.floor(Math.random() * array.length)];
   res.send(JSON.stringify(rand));
 });
@@ -94,6 +101,28 @@ app.get('/disgust', function(req, res) {
     if (global.planes[plane][1] === "disgust") {
       array.push(global.planes[plane]);
     }
+  }
+  emptyMessage = ["None of that type currently exists", "nothing"];
+  if(array.length > 0){   
+      //this array is not empty 
+  }else{
+    array.push(emptyMessage);
+  }
+  var rand = array[Math.floor(Math.random() * array.length)];
+  res.send(JSON.stringify(rand));
+});
+app.get('/angry', function(req, res) {
+  array = [];
+  for (plane in global.planes) {
+    if (global.planes[plane][1] === "angry") {
+      array.push(global.planes[plane]);
+    }
+  }
+  emptyMessage = ["None of that type currently exists", "nothing"];
+  if(array.length > 0){   
+      //this array is not empty 
+  }else{
+    array.push(emptyMessage);
   }
   var rand = array[Math.floor(Math.random() * array.length)];
   res.send(JSON.stringify(rand));
