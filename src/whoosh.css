@@ -5,12 +5,20 @@
     -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
-textarea{
+#view.read{
+  outline: none;
+  resize: none;
+  background: transparent;
+  border-color: transparent;
+  display: none;
+}
+
+.message{
   outline: none;
   resize: none;
   background: transparent;
   border-radius: 10px;
-  border-color: transparent;;
+  border-color: transparent;
   box-shadow: 0 0 10px #525354;
 }
 
@@ -20,7 +28,7 @@ textarea{
    z-index: 1;
 }
 canvas {
-    z-index: 0;
+    z-index: -1000;
 }
 .wing {
     background: url('wing1.png') center center no-repeat;
