@@ -2,6 +2,8 @@
 $().ready(function() {
                 $('.send').click(function() {
                   console.log(document.getElementById("planetext").value);
+                  //have the clear value after the form successfully sends the data.
+                  $('#planetext').val('').empty();
                     setTimeout(function() {
                         $('#plate').removeClass('front');
                         $('#container').removeClass('beginning');
