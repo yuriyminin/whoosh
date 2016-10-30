@@ -2,6 +2,9 @@
 $().ready(function() {
               var state = 'add';
                 $('.send').click(function() {
+                  if (state == 'get') {
+                    $('#get').show();
+                  }
                   var feeling;
                   if(state == 'add'){
                     $.ajax({
@@ -65,6 +68,7 @@ $().ready(function() {
 
 
   $('#add').click(function() {
+            $('#screencover').text("");
             state = 'add';
             document.querySelector("#planetext").style.boxShadow = '0 0 12px white';
             document.querySelector("#planetext").style.display = 'block';
@@ -91,6 +95,7 @@ $().ready(function() {
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
+      $('#get').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
