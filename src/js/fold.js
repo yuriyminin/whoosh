@@ -4,6 +4,7 @@ $().ready(function() {
                 $('.send').click(function() {
                   if (state == 'get') {
                     $('#get').show();
+                    $('#dropdown').show();
                   }
                   var feeling;
                   if(state == 'add'){
@@ -96,6 +97,7 @@ $().ready(function() {
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
       $('#get').hide();
+      $('#dropdown').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
@@ -114,6 +116,8 @@ $().ready(function() {
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
@@ -121,7 +125,7 @@ $().ready(function() {
 
 
 $('#disgust').click(function() {
-    state = 'get'; 
+    state = 'get';
     $.get("/disgust", function(data, status){
         $('#start').text(JSON.parse(data)[0]);
         console.log(JSON.parse(data)[0]);
@@ -133,12 +137,14 @@ $('#disgust').click(function() {
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
   });
 
-$('#fear').click(function() { 
+$('#fear').click(function() {
     state = 'get';
     $.get("/fear", function(data, status){
         $('#start').text(JSON.parse(data)[0]);
@@ -151,13 +157,15 @@ $('#fear').click(function() {
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
   });
 
 $('#joy').click(function() {
-    state = 'get'; 
+    state = 'get';
     $.get("/joy", function(data, status){
         $('#start').text(JSON.parse(data)[0]);
         console.log(JSON.parse(data)[0]);
@@ -169,13 +177,15 @@ $('#joy').click(function() {
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
     });
 
 $('#sadness').click(function() {
-    state = 'get'; 
+    state = 'get';
     $.get("/sadness", function(data, status){
         $('#start').text(JSON.parse(data)[0]);
         console.log(JSON.parse(data)[0]);
@@ -187,6 +197,8 @@ $('#sadness').click(function() {
       $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
       $('.curvable').removeClass('curved');
       $('#type-wrap').hide();
+      $('#get').hide();
+      $('#dropdown').hide();
       setTimeout(function() {
             $('#send').show();
       }, 700);
