@@ -1,5 +1,5 @@
 # WHOOSH
-Collaborative storytelling app
+Vent about your emotions online with friends
 
 ##Step 1
 #Download node.js
