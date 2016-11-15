@@ -1,6 +1,6 @@
 # WHOOSH
 Vent about your emotions online with friends
-Currently running live on bit.ly/codered-whoosh
+Currently running live on http://bit.ly/codered-whoosh
 
 ##Step 1
 #Download node.js
